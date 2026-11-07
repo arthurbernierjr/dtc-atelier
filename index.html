@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Atelier · the assembled page</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+    <p class="brand">Atelier</p>
+    <nav class="nav-links" aria-label="Page">
+      <a href="#work">Work</a>
+      <a href="#break">Break</a>
+      <a href="https://dtc-course-examples.surge.sh/">Sheet</a>
+      <a href="https://guild-hall-production.up.railway.app/">Hall</a>
+    </nav>
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false"><span></span></button>
+  </header>
+  <div class="menu" id="menu">
+    <nav aria-label="Mobile">
+      <a href="#work">Work</a>
+      <a href="#break">Break</a>
+      <a href="https://dtc-course-examples.surge.sh/">Sheet</a>
+      <a href="https://guild-hall-production.up.railway.app/">Hall</a>
+    </nav>
+  </div>
+  <main id="main">
+    <section class="hero container">
+      <div>
+        <p class="eyebrow">Lesson 10 · assembly</p>
+        <h1>One page.<span>In order.</span></h1>
+        <p class="lede">Tokens, shell, nav, hero, one grid, one break, a marquee, and a footer. The same order as King Chrissy and xoxoshayla, in the guide's green.</p>
+        <a class="pill" href="#work">See the grid</a>
+      </div>
+      <div class="portrait">the mark</div>
+    </section>
+    <section class="section" id="work">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">The grid</p>
+          <h2>Six rooms, one card.</h2>
+        </div>
+        <div class="grid">
+          <a class="card" href="#tokens"><strong>Tokens</strong><span>Color and type, once.</span></a>
+          <a class="card" href="#shell"><strong>Shell</strong><span>Reset, container, pill.</span></a>
+          <a class="card" href="#nav"><strong>Nav</strong><span>Fixed, then a menu.</span></a>
+          <a class="card" href="#hero"><strong>Hero</strong><span>Split, clamp, grain.</span></a>
+          <a class="card" href="#pictures"><strong>Pictures</strong><span>Cover, then a break.</span></a>
+          <a class="card" href="#motion"><strong>Motion</strong><span>A class, then still.</span></a>
+        </div>
+      </div>
+    </section>
+    <section class="break" id="break">
+      <p>The eye resets here.</p>
+    </section>
+  </main>
+  <div class="marquee" aria-hidden="true"><div class="marquee-track"><span>Tokens</span><span>Shell</span><span>Nav</span><span>Hero</span><span>Grid</span><span>Break</span><span>Motion</span><span>Tokens</span><span>Shell</span><span>Nav</span><span>Hero</span><span>Grid</span><span>Break</span><span>Motion</span></div></div>
+  <footer class="container"><p>© Arthur Bernier Jr · the assembled example</p></footer>
+  <script>
+    const nav = document.querySelector("#nav");
+    const menu = document.querySelector("#menu");
+    const toggle = document.querySelector(".nav-toggle");
+    addEventListener("scroll", () => nav.classList.toggle("scrolled", scrollY > 8), { passive: true });
+    toggle.addEventListener("click", () => {
+      const open = menu.classList.toggle("open");
+      toggle.setAttribute("aria-expanded", String(open));
+      toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    });
+    menu.addEventListener("click", (event) => {
+      if (event.target.closest("a")) menu.classList.remove("open");
+    });
+  </script>
+</body>
+</html>
